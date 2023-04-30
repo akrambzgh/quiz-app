@@ -1,4 +1,31 @@
-h1 {
-  -moz-columns: 1;
-       columns: 1;
+$fontFamily: "Philosopher", sans-serif;
+
+html {
+  height: 100%;
+  line-height: 1.6;
+}
+body {
+  font-family: $fontFamily;
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+  &::before {
+    box-sizing: border-box;
+  }
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+input,
+button {
+  outline: none;
+  border: 0;
+  &:focus {
+    outline: none;
+    border: 0;
+  }
 }

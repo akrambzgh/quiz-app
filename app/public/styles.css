@@ -1,6 +1,33 @@
-h1 {
-  -moz-columns: 1;
-  columns: 1;
+html {
+  height: 100%;
+  line-height: 1.6;
+}
+
+body {
+  font-family: "Philosopher", sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+*::before {
+  box-sizing: border-box;
+}
+*::after {
+  box-sizing: border-box;
+}
+
+input,
+button {
+  outline: none;
+  border: 0;
+}
+input:focus,
+button:focus {
+  outline: none;
+  border: 0;
 }
 
 /*# sourceMappingURL=styles.css.map */

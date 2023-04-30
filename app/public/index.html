@@ -3,7 +3,84 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Freinds Qiuz</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Philosopher:ital,wght@1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="../../dist/output.css" />
   </head>
-  <body></body>
+  <body>
+    <main class="w-9/12 m-auto mt-48 relative">
+      <div class="question-box border-8 p-11 border-gray-950 rounded-3xl">
+        <input
+          type="text"
+          placeholder="Add A Question Here.."
+          class="w-full text-6xl"
+        />
+      </div>
+
+      <div class="suggesd-answers grid grid-cols-4 grid-rows-2 gap-10 mt-32">
+        <div
+          class="answer p-5 border-4 border-gray-950 col-span-2 rounded-3xl flex justify-between items-center"
+        >
+          <input
+            type="text"
+            class="w-full text-2xl"
+            placeholder="Add An Answer Here.."
+          />
+          <div
+            class="radio-buttons w-10 h-10 rounded-full border-4 border-blue-400 cursor-pointer select-none"
+          ></div>
+        </div>
+        <div
+          class="answer p-5 border-4 border-gray-950 col-span-2 rounded-3xl flex justify-between items-center"
+        >
+          <input
+            type="text"
+            class="w-full text-2xl"
+            placeholder="Add An Answer Here.."
+          />
+          <div
+            class="radio-buttons w-10 h-10 rounded-full border-4 border-blue-400 cursor-pointer select-none"
+          ></div>
+        </div>
+        <div
+          class="answer p-5 border-4 border-gray-950 col-span-2 rounded-3xl flex justify-between items-center"
+        >
+          <input
+            type="text"
+            class="w-full text-2xl"
+            placeholder="Add An Answer Here.."
+          />
+          <div
+            class="radio-buttons w-10 h-10 rounded-full border-4 border-blue-400 cursor-pointer select-none"
+          ></div>
+        </div>
+        <div
+          class="answer p-5 border-4 border-gray-950 col-span-2 rounded-3xl flex justify-between items-center"
+        >
+          <input
+            type="text"
+            class="w-full text-2xl"
+            placeholder="Add An Answer Here.."
+          />
+          <div
+            class="radio-buttons w-10 h-10 rounded-full border-4 border-blue-400 cursor-pointer select-none"
+          ></div>
+        </div>
+      </div>
+
+      <div class="add-question absolute right-0">
+        <button class="add p-4 bg-blue-400 text-white text-xl rounded-xl mt-10">
+          Add Question
+        </button>
+      </div>
+    </main>
+  </body>
 </html>
