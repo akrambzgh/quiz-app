@@ -38,3 +38,17 @@ button {
 h1 {
   color: $darkBlue;
 }
+.question-box {
+  position: relative;
+  input.question-input {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+    width: 96%;
+  }
+}
+
+.question-sec:last-child() {
+  margin-bottom: 20px;
+}

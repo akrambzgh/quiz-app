@@ -34,4 +34,19 @@ h1 {
   color: #0c134f;
 }
 
+.question-box {
+  position: relative;
+}
+.question-box input.question-input {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 15px;
+  width: 96%;
+}
+
+.question-sec:last-child() {
+  margin-bottom: 20px;
+}
+
 /*# sourceMappingURL=styles.css.map */
