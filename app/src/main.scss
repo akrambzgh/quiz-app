@@ -1,3 +1,4 @@
+// Variables
 $darkBlue: #0c134f;
 $blue: #1d267d;
 $darkPurple: #5c469c;
@@ -5,6 +6,7 @@ $lightPurple: #d4adfc;
 
 $fontFamily: "Philosopher", sans-serif;
 
+// Globals
 html {
   height: 100%;
   line-height: 1.6;
@@ -38,6 +40,7 @@ button {
 h1 {
   color: $darkBlue;
 }
+
 .question-box {
   position: relative;
   input.question-input {
@@ -51,4 +54,57 @@ h1 {
 
 .question-sec:last-child() {
   margin-bottom: 20px;
+}
+
+.error {
+  right: -1000px;
+  &.animation-to-right {
+    -webkit-animation: slideRight 1200ms alternate forwards;
+    animation: slideLeft 1200ms alternate forwards;
+  }
+  &.animation-to-left {
+    -webkit-animation: slideLeft 1200ms alternate forwards;
+    animation: slideLeft 1200ms alternate forwards;
+  }
+}
+
+// Edit The ScrollBar
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $lightPurple;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $darkPurple;
+}
+
+// Slide Error Text To Left
+@-webkit-keyframes slideRight {
+  100% {
+    right: 12px;
+  }
+}
+@keyframes slideRight {
+  100% {
+    right: 12px;
+  }
+}
+
+// Slide Error Text To Right
+@-webkit-keyframes slideLeft {
+  100% {
+    right: -1000px;
+  }
+}
+@keyframes slideLeft {
+  100% {
+    right: -1000px;
+  }
+}
+
+.answer {
+  font-size: 25px;
 }

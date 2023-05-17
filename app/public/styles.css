@@ -49,4 +49,52 @@ h1 {
   margin-bottom: 20px;
 }
 
+.error {
+  right: -1000px;
+}
+.error.animation-to-right {
+  -webkit-animation: slideRight 1200ms alternate forwards;
+  animation: slideLeft 1200ms alternate forwards;
+}
+.error.animation-to-left {
+  -webkit-animation: slideLeft 1200ms alternate forwards;
+  animation: slideLeft 1200ms alternate forwards;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #d4adfc;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #5c469c;
+}
+
+@-webkit-keyframes slideRight {
+  100% {
+    right: 12px;
+  }
+}
+@keyframes slideRight {
+  100% {
+    right: 12px;
+  }
+}
+@-webkit-keyframes slideLeft {
+  100% {
+    right: -1000px;
+  }
+}
+@keyframes slideLeft {
+  100% {
+    right: -1000px;
+  }
+}
+.answer {
+  font-size: 25px;
+}
+
 /*# sourceMappingURL=styles.css.map */

@@ -8,6 +8,7 @@ module.exports = {
       darkPurple: "#5c469c",
       lightPurple: "#d4adfc",
       white: "#fff",
+      error: "#f44336",
     },
     extend: {},
   },
