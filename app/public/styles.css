@@ -34,6 +34,25 @@ h1 {
   color: #0c134f;
 }
 
+main {
+  width: 25%;
+}
+@media (min-width: 868px) and (max-width: 1719px) {
+  main {
+    width: 50%;
+  }
+}
+@media (min-width: 768px) and (max-width: 867px) {
+  main {
+    width: 60%;
+  }
+}
+@media (min-width: 350px) and (max-width: 767px) {
+  main {
+    width: 90%;
+  }
+}
+
 .question-box {
   position: relative;
 }
@@ -47,6 +66,16 @@ h1 {
 
 .question-sec:last-child() {
   margin-bottom: 20px;
+}
+
+.question-txt {
+  font-size: 30px;
+  width: 100%;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .error {
@@ -94,7 +123,15 @@ h1 {
   }
 }
 .answer {
+  padding: 15px;
+}
+.answer span.suggetions {
   font-size: 25px;
+  color: #0c134f;
+}
+
+.radio-button.choosed {
+  background-color: #d4adfc;
 }
 
 /*# sourceMappingURL=styles.css.map */

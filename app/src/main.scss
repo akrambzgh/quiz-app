@@ -41,6 +41,19 @@ h1 {
   color: $darkBlue;
 }
 
+main {
+  width: 25%;
+  @media (min-width: 868px) and (max-width: 1719px) {
+    width: 50%;
+  }
+  @media (min-width: 768px) and (max-width: 867px) {
+    width: 60%;
+  }
+  @media (min-width: 350px) and (max-width: 767px) {
+    width: 90%;
+  }
+}
+
 .question-box {
   position: relative;
   input.question-input {
@@ -54,6 +67,16 @@ h1 {
 
 .question-sec:last-child() {
   margin-bottom: 20px;
+}
+
+.question-txt {
+  font-size: 30px;
+  width: 100%;
+  text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .error {
@@ -106,5 +129,15 @@ h1 {
 }
 
 .answer {
-  font-size: 25px;
+  padding: 15px;
+  span.suggetions {
+    font-size: 25px;
+    color: $darkBlue;
+  }
+}
+
+.radio-button {
+  &.choosed {
+    background-color: $lightPurple;
+  }
 }
