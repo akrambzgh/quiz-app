@@ -1,53 +1,57 @@
 // Main Class
-// class Quiz {
-//   constructor(
-//     questionInputElements,
-//     questionTextElements,
-//     suggestedInputElements,
-//     addQuestionsSection,
-//     suggestedTextElements,
-//     answerQuestionsSection,
-//     errorText,
-//     allInputs
-//   ) {
-//     this.questionInputElements = questionInputElements;
-//     this.questionTextElements = questionTextElements;
-//     this.suggestedInputElements = suggestedInputElements;
-//     this.suggestedTextElements = suggestedTextElements;
-//     this.addQuestionsSection = addQuestionsSection;
-//     this.answerQuestionsSection = answerQuestionsSection;
-//     this.errorText = errorText;
-//     this.allInputs = allInputs;
-//   }
+class Quiz {
+  constructor(
+    questionInputElements,
+    questionTextElements,
+    suggestedInputElements,
+    addQuestionsSection,
+    suggestedTextElements,
+    answerQuestionsSection,
+    errorText,
+    allInputs
+  ) {
+    this.questionInputElements = questionInputElements;
+    this.questionTextElements = questionTextElements;
+    this.suggestedInputElements = suggestedInputElements;
+    this.suggestedTextElements = suggestedTextElements;
+    this.addQuestionsSection = addQuestionsSection;
+    this.answerQuestionsSection = answerQuestionsSection;
+    this.errorText = errorText;
+    this.allInputs = allInputs;
+  }
 
-//   updateQuestions() {
-//     let hasError = false;
+  updateQuestions() {
+    let hasError = false;
+    allInputs.forEach((input) => {
+      if (input.value.trim() === "" || input.value.length <= 5) {
+        console.log(input);
+        hasError = true;
+        return;
+      }
+    });
 
-//     this.allInputs.forEach((input) => {
-//       if (input.value.trim() === "" || input.value.length <= 5) {
-//         hasError = true;
-//         return;
-//       }
-//     });
+    if (hasError) {
+      errorText.classList.add("animation-to-right");
+      errorText.classList.remove("animation-to-left");
+    } else {
+      errorText.classList.add("animation-to-left");
+      errorText.classList.remove("animation-to-right");
+    }
 
-//     if (hasError) {
-//       this.errorText.classList.add("animation");
-//     } else {
-//       this.errorText.classList.remove("animation");
-//     }
-
-//     if (!hasError) {
-//       this.questionTextElements.forEach((textElement, index) => {
-//         textElement.textContent = questionInputElements[index].value;
-//       });
-//       this.suggestedTextElements.forEach((textElement, index) => {
-//         textElement.textContent = suggestedInputElements[index].value;
-//       });
-//       this.addQuestionsSection.classList.add("hidden");
-//       this.answerQuestionsSection.classList.remove("hidden");
-//     }
-//   }
-// }
+    if (!hasError) {
+      this.questionTextElements.forEach((textElement, index) => {
+        textElement.textContent = questionInputElements[index].value;
+        console.log(textElement);
+      });
+      this.suggestedTextElements.forEach((textElement, index) => {
+        textElement.textContent = suggestedInputElements[index].value;
+        console.log(textElement);
+      });
+      this.addQuestionsSection.classList.add("hidden");
+      this.answerQuestionsSection.classList.remove("hidden");
+    }
+  }
+}
 
 class RadioButton {
   constructor(radioElement) {
@@ -64,8 +68,9 @@ class RadioButton {
 
     // Remove the "selected" class from all selected section elements
     const sectionElements = document.querySelectorAll(
-      ".question-answer.selected"
+      "questioning-sec .question-answer"
     );
+
     sectionElements.forEach((element) => {
       element.classList.remove("selected");
     });
@@ -79,61 +84,58 @@ class RadioButton {
         ".suggested-answer-input"
       );
       const selectedInputValue = selectedInput.value;
-      console.log(`Selected input value for ${section}: ${selectedInputValue}`);
+
+      console.log(
+        `This Is From ${section}, and This Is The Value: ${selectedInputValue}`
+      );
     } else {
       console.log(`Please select one input for ${section}`);
     }
   }
 }
 
-const radioButtons = document.querySelectorAll(".radio-button");
+const radioButtons = document.querySelectorAll(
+  ".questioning-sec #radio-button"
+);
 radioButtons.forEach((radioButton) => {
   const radio = new RadioButton(radioButton);
-});
-
-const submitButton = document.querySelector(".confirm");
-submitButton.addEventListener("click", () => {
-  const selectedValues = [];
-  const sections = document.querySelectorAll(".question-answer.selected");
-  sections.forEach((section) => {
-    const selectedInput = section.querySelector(
-      "input[type='radio']:checked + .suggested-answer-input"
-    );
-    if (selectedInput) {
-      selectedValues.push(selectedInput.value);
-    }
-  });
-  console.log("Selected Input Values:", selectedValues);
 });
 
 // Elements
 const questionInputElements = document.querySelectorAll(".question-input");
 const questionTextElements = document.querySelectorAll(".question-txt");
-const confirmButton = document.querySelector(".confirm");
 const suggestedInputElements = document.querySelectorAll(
   ".suggested-answer-input"
 );
 
 let addQuestionsSection = document.querySelector(".all-qs");
 let errorText = document.querySelector(".error");
-let allInputs = document.querySelectorAll("input");
-
+let allInputs = document.querySelectorAll('input[type="text"]');
 let suggestedTextElements = document.querySelectorAll(".suggetions");
 let answerQuestionsSection = document.querySelector(".all-answers");
 
-// const quiz = new Quiz(
-//   questionInputElements,
-//   questionTextElements,
-//   suggestedTextElements,
-//   addQuestionsSection,
-//   suggestedInputElements,
-//   answerQuestionsSection,
-//   radioButtons,
-//   errorText,
-//   allInputs
-// );
+const quiz = new Quiz(
+  questionInputElements,
+  questionTextElements,
+  suggestedTextElements,
+  addQuestionsSection,
+  suggestedInputElements,
+  answerQuestionsSection,
+  radioButtons,
+  errorText,
+  allInputs
+);
 
-confirmButton.addEventListener("click", () => {
-  // quiz.updateQuestions();
-  // quiz.choseTheRightAnswer();
+const submitButton = document.querySelector(".confirm");
+submitButton.addEventListener("click", () => {
+  quiz.updateQuestions();
+  const selectedValues = [];
+  const sections = document.querySelectorAll(".question-answer.selected");
+  sections.forEach((section) => {
+    const selectedInput = section.querySelector(".suggested-answer-input");
+    if (selectedInput) {
+      selectedValues.push(selectedInput.value);
+    }
+  });
+  // console.log("Selected Input Values:", selectedValues);
 });
