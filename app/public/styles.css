@@ -81,13 +81,8 @@ main {
 .error {
   right: -1000px;
 }
-.error.animation-to-right {
-  -webkit-animation: slideRight 1200ms alternate forwards;
-  animation: slideLeft 1200ms alternate forwards;
-}
-.error.animation-to-left {
-  -webkit-animation: slideLeft 1200ms alternate forwards;
-  animation: slideLeft 1200ms alternate forwards;
+.error.show {
+  right: 12px;
 }
 
 ::-webkit-scrollbar {
@@ -102,26 +97,6 @@ main {
   background: #5c469c;
 }
 
-@-webkit-keyframes slideRight {
-  100% {
-    right: 12px;
-  }
-}
-@keyframes slideRight {
-  100% {
-    right: 12px;
-  }
-}
-@-webkit-keyframes slideLeft {
-  100% {
-    right: -1000px;
-  }
-}
-@keyframes slideLeft {
-  100% {
-    right: -1000px;
-  }
-}
 .answer {
   padding: 15px;
 }
