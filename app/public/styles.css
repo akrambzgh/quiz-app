@@ -109,4 +109,20 @@ main {
   background-color: #d4adfc;
 }
 
+.question-answer {
+  cursor: pointer;
+}
+.question-answer.right-answer {
+  background-color: #0c134f;
+}
+.question-answer.right-answer input[type=text] {
+  background-color: #0c134f;
+  color: white;
+}
+
+input[type=radio] {
+  border: 10px solid #fff;
+  box-shadow: 0 0 0 7px #5c469c;
+}
+
 /*# sourceMappingURL=styles.css.map */

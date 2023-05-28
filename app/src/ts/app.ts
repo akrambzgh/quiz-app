@@ -75,22 +75,17 @@ class Quiz {
 
 class RadioButton {
   // Properties
-  public radioElement: HTMLInputElement;
-  public sectionElement: HTMLElement | null;
-
-  constructor(radioElement: HTMLInputElement) {
-    this.radioElement = radioElement;
-    this.sectionElement = radioElement.closest(".question-answer");
-
+  public sectionElement: HTMLElement;
+  constructor(sectionElement: any) {
+    this.sectionElement = sectionElement;
     // Add click event listener to radio button
-    this.radioElement.addEventListener(
-      "click",
-      this.handleRadioClick.bind(this)
-    );
+    this.sectionElement.addEventListener("click", () => {
+      this.handleRadioClickOne();
+    });
   }
 
   // Handle radio button click event
-  handleRadioClick() {
+  handleRadioClickOne() {
     if (this.sectionElement) {
       const section = this.sectionElement.getAttribute("data-section");
 
@@ -98,25 +93,35 @@ class RadioButton {
       const sectionElements = document.querySelectorAll(
         ".questioning-sec .question-answer"
       );
+      console.log(sectionElements);
 
       sectionElements.forEach((element) => {
-        element.classList.remove("selected");
+        element.classList.remove("right-answer");
       });
 
-      if (this.radioElement.checked) {
-        // Add the "selected" class to the parent section
-        this.sectionElement.classList.add("selected");
+      if (this.sectionElement) {
+        // this.sectionElement.classList.add("right-answer");
+        this.sectionElement.classList.add("right-answer");
+        // Store the correct answer value in a data attribute
+        const correctAnswer = this.sectionElement.getAttribute(
+          "data-correct-answer"
+        );
 
         // Store the input value in a variable or use it elsewhere
         const selectedInput =
           this.sectionElement.querySelector<HTMLInputElement>(
             ".suggested-answer-input"
           );
-        const selectedInputValue = selectedInput?.value;
+        if (selectedInput) {
+          const selectedInputValue = selectedInput.value;
 
-        console.log(
-          `This Is From ${section}, and This Is The Value: ${selectedInputValue}`
-        );
+          // Check if the selected value matches the correct answer
+          if (selectedInputValue.trim() === correctAnswer) {
+            alert("Right answer!");
+          } else {
+            alert("Wrong answer!");
+          }
+        }
       } else {
         console.log(`Please select one input for ${section}`);
       }
@@ -125,11 +130,11 @@ class RadioButton {
 }
 
 // Get radio buttons and initialize RadioButton instances
-const radioButtons = document.querySelectorAll<HTMLInputElement>(
-  ".questioning-sec #radio-button"
+const answerSections = document.querySelectorAll<HTMLInputElement>(
+  ".questioning-sec .question-answer"
 );
-radioButtons.forEach((radioButton) => {
-  const radio = new RadioButton(radioButton);
+answerSections.forEach((section) => {
+  const radio = new RadioButton(section);
 });
 
 // Elements
@@ -171,7 +176,7 @@ submitButton?.addEventListener("click", () => {
   // Get selected values
   const selectedValues: string[] = [];
   const sections = document.querySelectorAll<HTMLElement>(
-    ".question-answer.selected"
+    ".question-answer.right-answer"
   );
   sections.forEach((section) => {
     const selectedInput = section.querySelector<HTMLInputElement>(

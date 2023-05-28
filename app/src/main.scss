@@ -112,3 +112,19 @@ main {
     background-color: $lightPurple;
   }
 }
+
+.question-answer {
+  cursor: pointer;
+  &.right-answer {
+    background-color: $darkBlue;
+    input[type="text"] {
+      background-color: $darkBlue;
+      color: white;
+    }
+  }
+}
+
+input[type="radio"] {
+  border: 10px solid #fff;
+  box-shadow: 0 0 0 7px $darkPurple;
+}
