@@ -73,7 +73,7 @@ class Quiz {
   }
 }
 
-class RadioButton {
+class SelectRightAnswer {
   // Properties
   public sectionElement: HTMLElement;
   constructor(sectionElement: any) {
@@ -129,12 +129,14 @@ class RadioButton {
   }
 }
 
-// Get radio buttons and initialize RadioButton instances
+class RightAnswerChoosing {}
+
+// Get radio buttons and initialize SelectRightAnswer instances
 const answerSections = document.querySelectorAll<HTMLInputElement>(
   ".questioning-sec .question-answer"
 );
 answerSections.forEach((section) => {
-  const radio = new RadioButton(section);
+  const radio = new SelectRightAnswer(section);
 });
 
 // Elements

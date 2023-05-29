@@ -101,6 +101,12 @@ main {
 
 .answer {
   padding: 15px;
+  &.selected {
+    background-color: $darkBlue;
+    span.suggetions {
+      color: #fff;
+    }
+  }
   span.suggetions {
     font-size: 25px;
     color: $darkBlue;

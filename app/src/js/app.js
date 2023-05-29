@@ -59,7 +59,7 @@ class Quiz {
   }
 }
 
-class RightAnswerChosing {
+class GetAnswerValue {
   constructor(sectionElement) {
     this.sectionElement = sectionElement;
     this.sectionElement.addEventListener("click", () => {
@@ -70,16 +70,7 @@ class RightAnswerChosing {
   handleRadioClickOne() {
     if (this.sectionElement) {
       const section = this.sectionElement.getAttribute("data-section");
-      // Remove the "selected" class from all selected section elements
-      const sectionElements = document.querySelectorAll(
-        ".questioning-sec .question-answer"
-      );
-      //   sectionElements.forEach((element) => {
-      //     element.classList.remove("right-answer");
-      //   });
       if (this.sectionElement) {
-        // this.sectionElement.classList.add("right-answer");
-        // this.sectionElement.dataset.rightWrong = "right";
         // Store the input value in a variable or use it elsewhere
         const selectedInput = this.sectionElement.querySelector(
           ".suggested-answer-input"
@@ -92,9 +83,32 @@ class RightAnswerChosing {
     }
   }
 }
+const answerSections = document.querySelectorAll(
+  ".questioning-sec .question-answer"
+);
+answerSections.forEach((section) => {
+  const answer = new GetAnswerValue(section);
+});
+
+class SelectRightAnswer {
+  constructor(answerSections, score) {
+    this.answerSections = answerSections;
+    this.score = score;
+    this.answerSections.addEventListener("click", () => {
+      this.checkRightAnswer();
+    });
+  }
+
+  checkRightAnswer() {
+    if (this.answerSections.getAttribute("data-right-wrong") === "right") {
+    } else {
+      console.log("Worng Answer");
+    }
+  }
+}
 
 // Define a class for each section
-class Section {
+class QuestionSection {
   constructor(sections) {
     this.sections = sections; // Array to store text elements
   }
@@ -111,35 +125,59 @@ class Section {
     this.sections[index].dataset.rightWrong = "right";
   }
 }
+class AnswerSection {
+  constructor(sections) {
+    this.sections = sections;
+  }
+
+  handleClick(index) {
+    this.sections.forEach((section) => {
+      section.classList.remove("selected");
+    });
+
+    this.sections[index].classList.add("selected");
+  }
+}
 
 // Create section objects
-const sections = [];
+const questionSectionsArray = [];
 
 // Add text elements to each section
 for (let i = 0; i < 10; i++) {
-  const sectionsElements = document.querySelectorAll(
+  const questionSectionsElements = document.querySelectorAll(
     `.questioning-sec${i} .question-answer`
   );
 
-  const section = new Section(sectionsElements);
+  const questionSection = new QuestionSection(questionSectionsElements);
 
-  sectionsElements.forEach((questionAnswer, index) => {
+  questionSectionsElements.forEach((questionAnswer, index) => {
     questionAnswer.addEventListener("click", () => {
-      console.log("hello");
-      section.handleClick(index);
+      questionSection.handleClick(index);
     });
   });
 
-  sections.push(section);
+  questionSectionsArray.push(questionSection);
+}
+// Create section objects
+const answersectionsArray = [];
+
+// Add text elements to each section
+for (let i = 0; i < 10; i++) {
+  const answerSectionsElements = document.querySelectorAll(
+    `.answering${i} .answer`
+  );
+
+  const answerSection = new AnswerSection(answerSectionsElements);
+
+  answerSectionsElements.forEach((answerSec, index) => {
+    answerSec.addEventListener("click", () => {
+      answerSection.handleClick(index);
+    });
+  });
+
+  answersectionsArray.push(answerSection);
 }
 
-// Get radio buttons and initialize RightAnswerChosing instances
-const answerSections = document.querySelectorAll(
-  ".questioning-sec .question-answer"
-);
-answerSections.forEach((section) => {
-  const answer = new RightAnswerChosing(section);
-});
 // Elements
 const questionInputElements = document.querySelectorAll(".question-input");
 const questionTextElements = document.querySelectorAll(".question-txt");
@@ -151,6 +189,9 @@ const addQuestionsSection = document.querySelector(".all-qs");
 const errorText = document.querySelector(".error");
 const allInputs = document.querySelectorAll('input[type="text"]');
 const answerQuestionsSection = document.querySelector(".all-answers");
+let allSuggestedTextSections = document.querySelectorAll(".answer");
+let allQuestionSections = document.querySelectorAll(".question-answer");
+
 // Create Quiz instance
 const quiz = new Quiz(
   questionInputElements,
@@ -167,23 +208,31 @@ const submitButton = document.querySelector(".confirm");
 submitButton === null || submitButton === void 0
   ? void 0
   : submitButton.addEventListener("click", () => {
-      quiz.updateQuestions();
       // Get selected values
       const selectedValues = [];
       const sections = document.querySelectorAll(
         ".question-answer.right-answer"
       );
+      // if (sections.length < 10) {
+      // alert("You Have To Select At Least 10 Right Answers");
+      // } else {
+      quiz.updateQuestions();
       sections.forEach((section) => {
         const selectedInput = section.querySelector(".suggested-answer-input");
         if (selectedInput) {
           selectedValues.push(selectedInput.value);
         }
       });
-      let allSuggestedTextSections = document.querySelectorAll(".answer");
-      let allQuestionSections = document.querySelectorAll(".question-answer");
+
       allSuggestedTextSections.forEach((section, index) => {
         section.dataset.rightWrong =
           allQuestionSections[index].dataset.rightWrong;
-        console.log(allQuestionSections[index].dataset.rightWrong);
       });
+      // }
     });
+
+let score = 0;
+
+allSuggestedTextSections.forEach((section) => {
+  const rigthAnswer = new SelectRightAnswer(section);
+});
