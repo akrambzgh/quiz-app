@@ -4,7 +4,7 @@ $blue: #1d267d;
 $darkPurple: #5c469c;
 $lightPurple: #d4adfc;
 
-$fontFamily: "Philosopher", sans-serif;
+$fontFamily: "Open Sans", sans-serif;
 
 // Globals
 html {
@@ -15,6 +15,7 @@ body {
   font-family: $fontFamily;
   padding: 0;
   margin: 0;
+  // overflow-x: hidden;
 }
 
 * {
@@ -39,21 +40,8 @@ button {
 
 h1 {
   color: $darkBlue;
+  text-transform: capitalize;
 }
-
-main {
-  width: 25%;
-  @media (min-width: 868px) and (max-width: 1719px) {
-    width: 50%;
-  }
-  @media (min-width: 768px) and (max-width: 867px) {
-    width: 60%;
-  }
-  @media (min-width: 350px) and (max-width: 767px) {
-    width: 90%;
-  }
-}
-
 .question-box {
   position: relative;
   input.question-input {
@@ -99,20 +87,6 @@ main {
   background: $darkPurple;
 }
 
-.answer {
-  padding: 15px;
-  &.selected {
-    background-color: $darkBlue;
-    span.suggetions {
-      color: #fff;
-    }
-  }
-  span.suggetions {
-    font-size: 25px;
-    color: $darkBlue;
-  }
-}
-
 .radio-button {
   &.choosed {
     background-color: $lightPurple;
@@ -134,3 +108,96 @@ input[type="radio"] {
   border: 10px solid #fff;
   box-shadow: 0 0 0 7px $darkPurple;
 }
+.all-answers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 9100px;
+  .answering {
+    width: 80%;
+    height: 100vh;
+    transition: 500ms;
+
+    .answers {
+      display: grid;
+      grid-template-columns: repeat(4, 334.125px);
+      grid-template-rows: repeat(2, 100px);
+      gap: 20px;
+      -moz-column-gap: 47px;
+      column-gap: 47px;
+      margin-top: 100px;
+
+      .answer {
+        padding: 15px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        &.selected {
+          background-color: $darkBlue;
+          span.suggetions {
+            color: #fff;
+          }
+        }
+        &.selected-right {
+          background-color: #009688;
+          span.suggetions {
+            color: #fff;
+          }
+        }
+        &.selected-wrong {
+          background-color: #f44336;
+          span.suggetions {
+            color: #fff;
+          }
+        }
+        span.suggetions {
+          font-size: 25px;
+          color: $darkBlue;
+        }
+      }
+    }
+  }
+}
+
+main {
+  width: 100%;
+
+  @media (min-width: 868px) and (max-width: 1719px) {
+    width: 50%;
+  }
+  @media (min-width: 768px) and (max-width: 867px) {
+    width: 60%;
+  }
+  @media (min-width: 350px) and (max-width: 767px) {
+    width: 90%;
+    .all-qs {
+      width: 100%;
+    }
+  }
+  @media (min-width: 350px) and (max-width: 1719px) {
+    .all-qs {
+      width: 100%;
+    }
+    .all-answers {
+      display: block;
+      padding: 0;
+      .answering {
+        width: 100%;
+        height: auto;
+        .answers {
+          display: block;
+          margin-top: 50px;
+        }
+      }
+    }
+  }
+}
+
+.all-qs {
+  width: 25%;
+  margin-inline: auto;
+}
+
+@import "../arrow.scss";

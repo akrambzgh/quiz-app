@@ -4,7 +4,7 @@ html {
 }
 
 body {
-  font-family: "Philosopher", sans-serif;
+  font-family: "Open Sans", sans-serif;
   padding: 0;
   margin: 0;
 }
@@ -32,25 +32,7 @@ button:focus {
 
 h1 {
   color: #0c134f;
-}
-
-main {
-  width: 25%;
-}
-@media (min-width: 868px) and (max-width: 1719px) {
-  main {
-    width: 50%;
-  }
-}
-@media (min-width: 768px) and (max-width: 867px) {
-  main {
-    width: 60%;
-  }
-}
-@media (min-width: 350px) and (max-width: 767px) {
-  main {
-    width: 90%;
-  }
+  text-transform: capitalize;
 }
 
 .question-box {
@@ -97,20 +79,6 @@ main {
   background: #5c469c;
 }
 
-.answer {
-  padding: 15px;
-}
-.answer.selected {
-  background-color: #0c134f;
-}
-.answer.selected span.suggetions {
-  color: #fff;
-}
-.answer span.suggetions {
-  font-size: 25px;
-  color: #0c134f;
-}
-
 .radio-button.choosed {
   background-color: #d4adfc;
 }
@@ -129,6 +97,222 @@ main {
 input[type=radio] {
   border: 10px solid #fff;
   box-shadow: 0 0 0 7px #5c469c;
+}
+
+.all-answers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  height: 9100px;
+}
+.all-answers .answering {
+  width: 80%;
+  height: 100vh;
+  transition: 500ms;
+}
+.all-answers .answering .answers {
+  display: grid;
+  grid-template-columns: repeat(4, 334.125px);
+  grid-template-rows: repeat(2, 100px);
+  gap: 20px;
+  -moz-column-gap: 47px;
+  column-gap: 47px;
+  margin-top: 100px;
+}
+.all-answers .answering .answers .answer {
+  padding: 15px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.all-answers .answering .answers .answer.selected {
+  background-color: #0c134f;
+}
+.all-answers .answering .answers .answer.selected span.suggetions {
+  color: #fff;
+}
+.all-answers .answering .answers .answer.selected-right {
+  background-color: #009688;
+}
+.all-answers .answering .answers .answer.selected-right span.suggetions {
+  color: #fff;
+}
+.all-answers .answering .answers .answer.selected-wrong {
+  background-color: #f44336;
+}
+.all-answers .answering .answers .answer.selected-wrong span.suggetions {
+  color: #fff;
+}
+.all-answers .answering .answers .answer span.suggetions {
+  font-size: 25px;
+  color: #0c134f;
+}
+
+main {
+  width: 100%;
+}
+@media (min-width: 868px) and (max-width: 1719px) {
+  main {
+    width: 50%;
+  }
+}
+@media (min-width: 768px) and (max-width: 867px) {
+  main {
+    width: 60%;
+  }
+}
+@media (min-width: 350px) and (max-width: 767px) {
+  main {
+    width: 90%;
+  }
+  main .all-qs {
+    width: 100%;
+  }
+}
+@media (min-width: 350px) and (max-width: 1719px) {
+  main .all-qs {
+    width: 100%;
+  }
+  main .all-answers {
+    display: block;
+    padding: 0;
+  }
+  main .all-answers .answering {
+    width: 100%;
+    height: auto;
+  }
+  main .all-answers .answering .answers {
+    display: block;
+    margin-top: 50px;
+  }
+}
+
+.all-qs {
+  width: 25%;
+  margin-inline: auto;
+}
+
+.round {
+  position: absolute;
+  border: 2px solid #000;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: red;
+}
+
+#cta {
+  width: 100%;
+  cursor: pointer;
+  position: absolute;
+}
+
+#cta .arrow {
+  left: 30%;
+}
+
+.arrow {
+  position: absolute;
+  bottom: 0;
+  margin-left: 0px;
+  width: 12px;
+  height: 12px;
+  background-size: contain;
+  top: 15px;
+}
+
+.segunda {
+  margin-left: 8px;
+}
+
+.next {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHN0eWxlPi5zdDB7ZmlsbDojZmZmfTwvc3R5bGU+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxOS4xIDIxN2MyMC4yIDIwLjIgMTkuOSA1My4yLS42IDczLjdzLTUzLjUgMjAuOC03My43LjZsLTE5MC0xOTBjLTIwLjEtMjAuMi0xOS44LTUzLjIuNy03My43UzEwOSA2LjggMTI5LjEgMjdsMTkwIDE5MHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzE5LjEgMjkwLjVjMjAuMi0yMC4yIDE5LjktNTMuMi0uNi03My43cy01My41LTIwLjgtNzMuNy0uNmwtMTkwIDE5MGMtMjAuMiAyMC4yLTE5LjkgNTMuMi42IDczLjdzNTMuNSAyMC44IDczLjcuNmwxOTAtMTkweiIvPjwvc3ZnPg==);
+}
+
+@-webkit-keyframes bounceAlpha {
+  0% {
+    opacity: 1;
+    transform: translateX(0px) scale(1);
+  }
+  25% {
+    opacity: 0;
+    transform: translateX(10px) scale(0.9);
+  }
+  26% {
+    opacity: 0;
+    transform: translateX(-10px) scale(0.9);
+  }
+  55% {
+    opacity: 1;
+    transform: translateX(0px) scale(1);
+  }
+}
+@keyframes bounceAlpha {
+  0% {
+    opacity: 1;
+    transform: translateX(0px) scale(1);
+  }
+  25% {
+    opacity: 0;
+    transform: translateX(10px) scale(0.9);
+  }
+  26% {
+    opacity: 0;
+    transform: translateX(-10px) scale(0.9);
+  }
+  55% {
+    opacity: 1;
+    transform: translateX(0px) scale(1);
+  }
+}
+.bounceAlpha {
+  -webkit-animation-name: bounceAlpha;
+  animation-name: bounceAlpha;
+  -webkit-animation-duration: 1.4s;
+  animation-duration: 1.4s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+.arrow.primera.bounceAlpha {
+  -webkit-animation-name: bounceAlpha;
+  animation-name: bounceAlpha;
+  -webkit-animation-duration: 1.4s;
+  animation-duration: 1.4s;
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+.round:hover .arrow {
+  -webkit-animation-name: bounceAlpha;
+  animation-name: bounceAlpha;
+  -webkit-animation-duration: 1.4s;
+  animation-duration: 1.4s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+}
+
+.round:hover .arrow.primera {
+  -webkit-animation-name: bounceAlpha;
+  animation-name: bounceAlpha;
+  -webkit-animation-duration: 1.4s;
+  animation-duration: 1.4s;
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
 }
 
 /*# sourceMappingURL=styles.css.map */
