@@ -125,25 +125,26 @@ radioButtons.forEach((radioButton) => {
 });
 
 class QuestionSection {
-  constructor(button) {
-    this.button = button;
+  constructor(section) {
+    this.section = section;
   }
 
   handleClick(index) {
-    this.button.forEach((section) => {
-      section.parentElement.dataset.rightWrong = "wrong";
-      section.parentElement.classList.remove("right-answer");
+    this.section.forEach((section) => {
+      section.dataset.rightWrong = "wrong";
+      section.classList.remove("right-answer");
     });
 
-    this.button.parentElements[index].classList.add("right-answer");
-    this.button.parentElements[index].dataset.rightWrong = "right";
+    this.section[index].classList.add("right-answer");
+    this.section[index].dataset.rightWrong = "right";
   }
 }
 
 class SelectRightAnswer {
-  constructor(answerSection, allSections) {
+  constructor(answerSection, allSections, confirmSection) {
     this.answerSection = answerSection;
     this.allSections = allSections;
+    this.confirmSection = confirmSection;
     this.answerSection.addEventListener("click", () => {
       this.checkRightAnswer();
     });
@@ -152,6 +153,9 @@ class SelectRightAnswer {
         this.allSections[index].parentElement.parentElement.classList.add(
           "to-left"
         );
+        if (index == 36 || index == 37 || index == 38 || index == 39) {
+          this.confirmSection.classList.add("show");
+        }
       });
     });
   }
@@ -167,23 +171,16 @@ class SelectRightAnswer {
   }
 }
 
-document.querySelector("input");
-
-// class AnswerSection {
-//   constructor(sections) {
-//     this.sections = sections;
-//   }
-
-//   handleClick(index) {
-//     this.sections.forEach((section) => {
-//       section.classList.remove("selected-right");
-//       section.classList.remove("selected-wrong");
-//     });
-
-//     section.classList.add("selected-right");
-//     section.classList.add("selected-wrong");
-//   }
-// }
+class ConfirmeAnswerWithScore {
+  constructor(score, rightAnswers) {
+    this.score = score;
+    this.rightAnswers = rightAnswers;
+  }
+  clacTheScore() {
+    this.score = this.rightAnswers;
+    console.log(this.score);
+  }
+}
 
 const questionInputElements = document.querySelectorAll(".question-input");
 const questionTextElements = document.querySelectorAll(".question-txt");
@@ -208,7 +205,7 @@ const quiz = new Quiz(
   errorText,
   allInputs
 );
-errorText.parentElement;
+
 const submitButton = document.querySelector(".confirm");
 submitButton?.addEventListener("click", () => {
   const selectedValues = [];
@@ -237,8 +234,14 @@ submitButton?.addEventListener("click", () => {
   // }
 });
 
+const confirmSection = document.querySelector(".confirm-answers");
+
 allSuggestedTextSections.forEach((section) => {
-  const rightAnswer = new SelectRightAnswer(section, allSuggestedTextSections);
+  const rightAnswer = new SelectRightAnswer(
+    section,
+    allSuggestedTextSections,
+    confirmSection
+  );
 });
 
 // Create section objects
@@ -247,7 +250,7 @@ const questionSectionsArray = [];
 // Add text elements to each section
 for (let i = 0; i < 10; i++) {
   const questionSectionsElements = document.querySelectorAll(
-    `.questioning-sec${i} .choose-btn`
+    `.questioning-sec${i} .question-answer`
   );
   const questionSection = new QuestionSection(questionSectionsElements);
 
@@ -260,31 +263,17 @@ for (let i = 0; i < 10; i++) {
   questionSectionsArray.push(questionSection);
 }
 
-// // Create section objects
-// const answersectionsArray = [];
-
-// // Add text elements to each section
-// for (let i = 0; i < 10; i++) {
-//   const answerSectionsElements = document.querySelectorAll(
-//     `.answering${i} .answer`
-//   );
-
-//   const answerSection = new AnswerSection(answerSectionsElements);
-
-//   answerSectionsElements.forEach((answerSec, index) => {
-//     answerSec.addEventListener("click", () => {
-//       answerSection.handleClick(index);
-//     });
-//   });
-
-//   answersectionsArray.push(answerSection);
-// }
-
 // Get answer sections and initialize GetAnswerValue for each section
 const answerSections = document.querySelectorAll(
   ".questioning-sec .question-answer"
 );
 
-// answerSections.forEach((section) => {
-//   const answer = new GetAnswerValue(section);
-// });
+const confirmButtons = document.querySelector(".confirm-btn");
+let score = 0;
+const rightChoises = document.querySelectorAll(".selected-right");
+
+confirmButtons.addEventListener("click", () => {
+  const getScore = new ConfirmeAnswerWithScore(score, rightChoises);
+  console.log(rightChoises);
+  getScore.clacTheScore();
+});

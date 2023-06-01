@@ -19,7 +19,6 @@ body {
   padding: 0;
   margin: 0;
   background-color: $background;
-  overflow-y: hidden;
 }
 
 * {
@@ -121,6 +120,8 @@ h1 {
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
+  overflow-y: hidden;
+
   .answering {
     width: 80%;
     height: 93vh;
@@ -209,8 +210,8 @@ main {
 }
 
 .to-left {
-  -webkit-animation: toLeft 500ms linear 300ms forwards;
-  animation: toLeft 500ms linear 300ms forwards;
+  -webkit-animation: toLeft 1000ms linear 300ms forwards;
+  animation: toLeft 1000ms linear 300ms forwards;
 }
 @-webkit-keyframes toLeft {
   50% {
@@ -229,6 +230,20 @@ main {
   100% {
     transform: translateX(-120%);
     position: absolute;
+  }
+}
+
+.confirm-answers {
+  width: 500px;
+  height: 100px;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+  transition: 300ms;
+  transition-delay: 500ms;
+  &.show {
+    opacity: 1;
+    visibility: visible;
   }
 }
 
