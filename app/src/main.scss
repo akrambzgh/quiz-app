@@ -7,6 +7,8 @@ $accent: #a2d4e7;
 
 $fontFamily: "Open Sans", sans-serif;
 
+$topLenght: -104%;
+
 // Globals
 html {
   height: 100%;
@@ -17,7 +19,7 @@ body {
   padding: 0;
   margin: 0;
   background-color: $background;
-  // overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 * {
@@ -76,18 +78,18 @@ h1 {
   }
 }
 
-// // Edit The ScrollBar
-// ::-webkit-scrollbar {
-//   width: 10px;
-// }
+// Edit The ScrollBar
+::-webkit-scrollbar {
+  width: 10px;
+}
 
-// ::-webkit-scrollbar-track {
-//   background: $lightPurple;
-// }
+::-webkit-scrollbar-track {
+  background: $secondary;
+}
 
-// ::-webkit-scrollbar-thumb {
-//   background: $darkPurple;
-// }
+::-webkit-scrollbar-thumb {
+  background: $text;
+}
 
 .radio-button {
   &.choosed {
@@ -119,10 +121,9 @@ h1 {
   justify-content: space-between;
   align-items: center;
   flex-direction: column;
-  height: 9100px;
   .answering {
     width: 80%;
-    height: 100vh;
+    height: 93vh;
     transition: 500ms;
 
     .answers {
@@ -206,4 +207,29 @@ main {
   width: 25%;
   margin-inline: auto;
 }
-@import "../arrow.scss";
+
+.to-left {
+  -webkit-animation: toLeft 500ms linear 300ms forwards;
+  animation: toLeft 500ms linear 300ms forwards;
+}
+@-webkit-keyframes toLeft {
+  50% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(-120%);
+    position: absolute;
+  }
+}
+
+@keyframes toLeft {
+  50% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(-120%);
+    position: absolute;
+  }
+}
+
+@import "./arrow.scss";

@@ -1,4 +1,4 @@
-"use strict";
+("use strict");
 
 class Quiz {
   constructor(
@@ -141,23 +141,33 @@ class QuestionSection {
 }
 
 class SelectRightAnswer {
-  constructor(answerSections) {
-    this.answerSections = answerSections;
-    this.answerSections.addEventListener("click", () => {
+  constructor(answerSection, allSections) {
+    this.answerSection = answerSection;
+    this.allSections = allSections;
+    this.answerSection.addEventListener("click", () => {
       this.checkRightAnswer();
+    });
+    this.allSections.forEach((section, index) => {
+      section.addEventListener("click", () => {
+        this.allSections[index].parentElement.parentElement.classList.add(
+          "to-left"
+        );
+      });
     });
   }
 
   checkRightAnswer() {
-    if (this.answerSections.getAttribute("data-right-wrong") === "right") {
+    if (this.answerSection.getAttribute("data-right-wrong") === "right") {
       // Correct answer
-      this.answerSections.classList.add("selected-right");
+      this.answerSection.classList.add("selected-right");
     } else {
       // Wrong answer
-      this.answerSections.classList.add("selected-wrong");
+      this.answerSection.classList.add("selected-wrong");
     }
   }
 }
+
+document.querySelector("input");
 
 // class AnswerSection {
 //   constructor(sections) {
@@ -220,11 +230,15 @@ submitButton?.addEventListener("click", () => {
   allSuggestedTextSections.forEach((section, index) => {
     section.dataset.rightWrong = allQuestionSections[index].dataset.rightWrong;
   });
+  window.scrollTo({
+    top: 0,
+    behavior: "auto",
+  });
   // }
 });
 
 allSuggestedTextSections.forEach((section) => {
-  const rightAnswer = new SelectRightAnswer(section);
+  const rightAnswer = new SelectRightAnswer(section, allSuggestedTextSections);
 });
 
 // Create section objects
