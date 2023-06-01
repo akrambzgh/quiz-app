@@ -78,6 +78,68 @@ class Quiz {
 //   }
 // }
 
+class RadioButton {
+  constructor(radioElement) {
+    this.radioElement = radioElement;
+    this.sectionElement = radioElement.closest(".question-answer");
+    this.radioElement.addEventListener(
+      "click",
+      this.handleRadioClick.bind(this)
+    );
+  }
+  handleRadioClick() {
+    if (this.sectionElement) {
+      const section = this.sectionElement.getAttribute("data-section");
+
+      // Remove the "selected" class from all selected section elements
+      const sectionElements = document.querySelectorAll(
+        ".questioning-sec .question-answer"
+      );
+
+      sectionElements.forEach((element) => {
+        element.classList.remove("selected");
+      });
+
+      if (this.radioElement) {
+        // Add the "selected" class to the parent section
+        this.sectionElement.classList.add("selected");
+
+        // Store the input value in a variable or use it elsewhere
+        const selectedInput = this.sectionElement.querySelector(
+          ".suggested-answer-input"
+        );
+        const selectedInputValue = selectedInput?.value;
+
+        console.log(
+          `This Is From ${section}, and This Is The Value: ${selectedInputValue}`
+        );
+      } else {
+        console.log(`Please select one input for ${section}`);
+      }
+    }
+  }
+}
+const radioButtons = document.querySelectorAll(".questioning-sec .choose-btn");
+radioButtons.forEach((radioButton) => {
+  const radio = new RadioButton(radioButton);
+});
+
+class QuestionSection {
+  constructor(button) {
+    this.button = button;
+  }
+
+  handleClick(index) {
+    this.button.forEach((section) => {
+      section.parentElement.dataset.rightWrong = "wrong";
+      section.parentElement.classList.remove("right-answer");
+    });
+
+    this.button.parentElements[index].classList.add("right-answer");
+    this.button.parentElements[index].dataset.rightWrong = "right";
+  }
+}
+
 class SelectRightAnswer {
   constructor(answerSections) {
     this.answerSections = answerSections;
@@ -94,22 +156,6 @@ class SelectRightAnswer {
       // Wrong answer
       this.answerSections.classList.add("selected-wrong");
     }
-  }
-}
-
-class QuestionSection {
-  constructor(sections) {
-    this.sections = sections;
-  }
-
-  handleClick(index) {
-    this.sections.forEach((section) => {
-      section.dataset.rightWrong = "wrong";
-      section.classList.remove("right-answer");
-    });
-
-    this.sections[index].classList.add("right-answer");
-    this.sections[index].dataset.rightWrong = "right";
   }
 }
 
@@ -152,7 +198,7 @@ const quiz = new Quiz(
   errorText,
   allInputs
 );
-
+errorText.parentElement;
 const submitButton = document.querySelector(".confirm");
 submitButton?.addEventListener("click", () => {
   const selectedValues = [];
@@ -187,9 +233,8 @@ const questionSectionsArray = [];
 // Add text elements to each section
 for (let i = 0; i < 10; i++) {
   const questionSectionsElements = document.querySelectorAll(
-    `.questioning-sec${i} .question-answer`
+    `.questioning-sec${i} .choose-btn`
   );
-
   const questionSection = new QuestionSection(questionSectionsElements);
 
   questionSectionsElements.forEach((questionAnswer, index) => {

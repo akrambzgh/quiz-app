@@ -3,11 +3,11 @@ module.exports = {
   content: ["./app/public/index.html"],
   theme: {
     colors: {
-      darkBlue: "#0C134F",
-      blue: "#1d267d",
-      darkPurple: "#5c469c",
-      lightPurple: "#d4adfc",
-      white: "#fff",
+      secondary: "#07171c",
+      primary: "#8dcbe2",
+      background: "#030a0c",
+      text: "#dbeef6",
+      accent: "#a2d4e7",
       error: "#f44336",
     },
     extend: {},

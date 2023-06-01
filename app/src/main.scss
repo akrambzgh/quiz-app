@@ -1,8 +1,9 @@
 // Variables
-$darkBlue: #0c134f;
-$blue: #1d267d;
-$darkPurple: #5c469c;
-$lightPurple: #d4adfc;
+$text: #dbeef6;
+$background: #030a0c;
+$primary: #8dcbe2;
+$secondary: #07171c;
+$accent: #a2d4e7;
 
 $fontFamily: "Open Sans", sans-serif;
 
@@ -15,6 +16,7 @@ body {
   font-family: $fontFamily;
   padding: 0;
   margin: 0;
+  background-color: $background;
   // overflow-x: hidden;
 }
 
@@ -39,7 +41,7 @@ button {
 }
 
 h1 {
-  color: $darkBlue;
+  color: $text;
   text-transform: capitalize;
 }
 .question-box {
@@ -74,40 +76,44 @@ h1 {
   }
 }
 
-// Edit The ScrollBar
-::-webkit-scrollbar {
-  width: 10px;
-}
+// // Edit The ScrollBar
+// ::-webkit-scrollbar {
+//   width: 10px;
+// }
 
-::-webkit-scrollbar-track {
-  background: $lightPurple;
-}
+// ::-webkit-scrollbar-track {
+//   background: $lightPurple;
+// }
 
-::-webkit-scrollbar-thumb {
-  background: $darkPurple;
-}
+// ::-webkit-scrollbar-thumb {
+//   background: $darkPurple;
+// }
 
 .radio-button {
   &.choosed {
-    background-color: $lightPurple;
+    background-color: $secondary;
   }
 }
 
+.choose-btn {
+  border: 10px solid $text;
+  box-shadow: 0 0 0 7px $accent;
+}
+
 .question-answer {
-  cursor: pointer;
   &.right-answer {
-    background-color: $darkBlue;
+    background-color: $primary;
     input[type="text"] {
-      background-color: $darkBlue;
+      background-color: $primary;
       color: white;
+    }
+    .choose-btn {
+      border: 10px solid $accent;
+      box-shadow: 0 0 0 7px $background;
     }
   }
 }
 
-input[type="radio"] {
-  border: 10px solid #fff;
-  box-shadow: 0 0 0 7px $darkPurple;
-}
 .all-answers {
   display: flex;
   justify-content: space-between;
@@ -126,7 +132,8 @@ input[type="radio"] {
       gap: 20px;
       -moz-column-gap: 47px;
       column-gap: 47px;
-      margin-top: 100px;
+      row-gap: 150px;
+      margin-top: 120px;
 
       .answer {
         padding: 15px;
@@ -135,7 +142,7 @@ input[type="radio"] {
         -ms-user-select: none;
         user-select: none;
         &.selected {
-          background-color: $darkBlue;
+          background-color: $secondary;
           span.suggetions {
             color: #fff;
           }
@@ -154,7 +161,7 @@ input[type="radio"] {
         }
         span.suggetions {
           font-size: 25px;
-          color: $darkBlue;
+          color: $primary;
         }
       }
     }
@@ -199,5 +206,4 @@ main {
   width: 25%;
   margin-inline: auto;
 }
-
 @import "../arrow.scss";
