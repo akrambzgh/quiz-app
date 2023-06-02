@@ -61,29 +61,6 @@ h1 {
   user-select: none;
 }
 
-.error {
-  right: -1000px;
-}
-.error.show {
-  right: 12px;
-}
-
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: #07171c;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #dbeef6;
-}
-
-.radio-button.choosed {
-  background-color: #07171c;
-}
-
 .choose-btn {
   border: 10px solid #dbeef6;
   box-shadow: 0 0 0 7px #a2d4e7;
@@ -179,7 +156,6 @@ main {
     width: 100%;
   }
   main .all-answers {
-    display: block;
     padding: 0;
   }
   main .all-answers .answering {
@@ -224,8 +200,6 @@ main {
   width: 500px;
   height: 100px;
   transform: translate(-50%, -50%);
-  opacity: 0;
-  visibility: hidden;
   transition: 300ms;
   transition-delay: 500ms;
 }
@@ -353,6 +327,41 @@ main {
   animation-iteration-count: infinite;
   -webkit-animation-timing-function: linear;
   animation-timing-function: linear;
+}
+
+.congratulation {
+  width: 700px;
+  height: 700px;
+  transform: translate(-50%, -50%);
+  transition: 300ms;
+  transition-delay: 500ms;
+}
+.congratulation.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.error {
+  right: -1000px;
+}
+.error.show {
+  right: 12px;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07171c;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #dbeef6;
+}
+
+.radio-button.choosed {
+  background-color: #07171c;
 }
 
 /*# sourceMappingURL=styles.css.map */

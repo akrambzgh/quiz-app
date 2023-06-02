@@ -4,6 +4,8 @@ $background: #030a0c;
 $primary: #8dcbe2;
 $secondary: #07171c;
 $accent: #a2d4e7;
+$right: #009688;
+$wrong: #f44336;
 
 $fontFamily: "Open Sans", sans-serif;
 
@@ -70,32 +72,6 @@ h1 {
   user-select: none;
 }
 
-.error {
-  right: -1000px;
-  &.show {
-    right: 12px;
-  }
-}
-
-// Edit The ScrollBar
-::-webkit-scrollbar {
-  width: 10px;
-}
-
-::-webkit-scrollbar-track {
-  background: $secondary;
-}
-
-::-webkit-scrollbar-thumb {
-  background: $text;
-}
-
-.radio-button {
-  &.choosed {
-    background-color: $secondary;
-  }
-}
-
 .choose-btn {
   border: 10px solid $text;
   box-shadow: 0 0 0 7px $accent;
@@ -150,13 +126,13 @@ h1 {
           }
         }
         &.selected-right {
-          background-color: #009688;
+          background-color: $right;
           span.suggetions {
             color: #fff;
           }
         }
         &.selected-wrong {
-          background-color: #f44336;
+          background-color: $wrong;
           span.suggetions {
             color: #fff;
           }
@@ -190,7 +166,6 @@ main {
       width: 100%;
     }
     .all-answers {
-      display: block;
       padding: 0;
       .answering {
         width: 100%;
@@ -237,8 +212,6 @@ main {
   width: 500px;
   height: 100px;
   transform: translate(-50%, -50%);
-  opacity: 0;
-  visibility: hidden;
   transition: 300ms;
   transition-delay: 500ms;
   &.show {
@@ -248,3 +221,41 @@ main {
 }
 
 @import "./arrow.scss";
+
+.congratulation {
+  width: 700px;
+  height: 700px;
+  transform: translate(-50%, -50%);
+  transition: 300ms;
+  transition-delay: 500ms;
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.error {
+  right: -1000px;
+  &.show {
+    right: 12px;
+  }
+}
+
+// Edit The ScrollBar
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $secondary;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $text;
+}
+
+.radio-button {
+  &.choosed {
+    background-color: $secondary;
+  }
+}
