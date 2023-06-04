@@ -1,26 +1,32 @@
 {
-  "name": "freinds-quiz-app",
+  "name": "quiz-app",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "compile:sass": "sass ./app/src/main.scss ./app/public/styles.css -w"
+    "compile:sass": "sass ./app/src/main.scss ./app/public/styles.css -w",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/akrambzgh/freinds-quiz-app.git"
+    "url": "git+https://github.com/akrambzgh/quiz-app.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/akrambzgh/freinds-quiz-app/issues"
+    "url": "https://github.com/akrambzgh/quiz-app/issues"
   },
-  "homepage": "https://github.com/akrambzgh/freinds-quiz-app#readme",
+  "homepage": "https://github.com/akrambzgh/quiz-app#readme",
   "dependencies": {
     "dart-sass": "^1.25.0",
     "sass": "^1.62.1",
     "tailwindcss": "^3.3.2",
     "typescript": "^5.0.4"
+  },
+  "devDependencies": {
+    "ts-loader": "^9.4.3",
+    "webpack": "^5.85.0",
+    "webpack-cli": "^5.1.2"
   }
 }

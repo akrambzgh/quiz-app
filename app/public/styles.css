@@ -5,9 +5,6 @@ html {
 
 body {
   font-family: "Open Sans", sans-serif;
-  padding: 0;
-  margin: 0;
-  background-color: #030a0c;
 }
 
 * {
@@ -36,29 +33,9 @@ h1 {
   text-transform: capitalize;
 }
 
-.question-box {
-  position: relative;
-}
 .question-box input.question-input {
-  position: absolute;
-  top: 50%;
   transform: translateY(-50%);
-  left: 15px;
   width: 96%;
-}
-
-.question-sec:last-child() {
-  margin-bottom: 20px;
-}
-
-.question-txt {
-  font-size: 30px;
-  width: 100%;
-  text-align: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 .choose-btn {
@@ -69,7 +46,7 @@ h1 {
 .question-answer.right-answer {
   background-color: #8dcbe2;
 }
-.question-answer.right-answer input[type=text] {
+.question-answer.right-answer input[type="text"] {
   background-color: #8dcbe2;
   color: white;
 }
@@ -208,127 +185,6 @@ main {
   visibility: visible;
 }
 
-.round {
-  position: absolute;
-  border: 2px solid #000;
-  width: 40px;
-  height: 40px;
-  border-radius: 100%;
-  background-color: red;
-}
-
-#cta {
-  width: 100%;
-  cursor: pointer;
-  position: absolute;
-}
-
-#cta .arrow {
-  left: 30%;
-}
-
-.arrow {
-  position: absolute;
-  bottom: 0;
-  margin-left: 0px;
-  width: 12px;
-  height: 12px;
-  background-size: contain;
-  top: 15px;
-}
-
-.segunda {
-  margin-left: 8px;
-}
-
-.next {
-  background-image: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHN0eWxlPi5zdDB7ZmlsbDojZmZmfTwvc3R5bGU+PHBhdGggY2xhc3M9InN0MCIgZD0iTTMxOS4xIDIxN2MyMC4yIDIwLjIgMTkuOSA1My4yLS42IDczLjdzLTUzLjUgMjAuOC03My43LjZsLTE5MC0xOTBjLTIwLjEtMjAuMi0xOS44LTUzLjIuNy03My43UzEwOSA2LjggMTI5LjEgMjdsMTkwIDE5MHoiLz48cGF0aCBjbGFzcz0ic3QwIiBkPSJNMzE5LjEgMjkwLjVjMjAuMi0yMC4yIDE5LjktNTMuMi0uNi03My43cy01My41LTIwLjgtNzMuNy0uNmwtMTkwIDE5MGMtMjAuMiAyMC4yLTE5LjkgNTMuMi42IDczLjdzNTMuNSAyMC44IDczLjcuNmwxOTAtMTkweiIvPjwvc3ZnPg==);
-}
-
-@-webkit-keyframes bounceAlpha {
-  0% {
-    opacity: 1;
-    transform: translateX(0px) scale(1);
-  }
-  25% {
-    opacity: 0;
-    transform: translateX(10px) scale(0.9);
-  }
-  26% {
-    opacity: 0;
-    transform: translateX(-10px) scale(0.9);
-  }
-  55% {
-    opacity: 1;
-    transform: translateX(0px) scale(1);
-  }
-}
-@keyframes bounceAlpha {
-  0% {
-    opacity: 1;
-    transform: translateX(0px) scale(1);
-  }
-  25% {
-    opacity: 0;
-    transform: translateX(10px) scale(0.9);
-  }
-  26% {
-    opacity: 0;
-    transform: translateX(-10px) scale(0.9);
-  }
-  55% {
-    opacity: 1;
-    transform: translateX(0px) scale(1);
-  }
-}
-.bounceAlpha {
-  -webkit-animation-name: bounceAlpha;
-  animation-name: bounceAlpha;
-  -webkit-animation-duration: 1.4s;
-  animation-duration: 1.4s;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-}
-
-.arrow.primera.bounceAlpha {
-  -webkit-animation-name: bounceAlpha;
-  animation-name: bounceAlpha;
-  -webkit-animation-duration: 1.4s;
-  animation-duration: 1.4s;
-  -webkit-animation-delay: 0.2s;
-  animation-delay: 0.2s;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-}
-
-.round:hover .arrow {
-  -webkit-animation-name: bounceAlpha;
-  animation-name: bounceAlpha;
-  -webkit-animation-duration: 1.4s;
-  animation-duration: 1.4s;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-}
-
-.round:hover .arrow.primera {
-  -webkit-animation-name: bounceAlpha;
-  animation-name: bounceAlpha;
-  -webkit-animation-duration: 1.4s;
-  animation-duration: 1.4s;
-  -webkit-animation-delay: 0.2s;
-  animation-delay: 0.2s;
-  -webkit-animation-iteration-count: infinite;
-  animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  animation-timing-function: linear;
-}
-
 .congratulation {
   width: 700px;
   height: 700px;
@@ -363,5 +219,3 @@ main {
 .radio-button.choosed {
   background-color: #07171c;
 }
-
-/*# sourceMappingURL=styles.css.map */
