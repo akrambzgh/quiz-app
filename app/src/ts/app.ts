@@ -94,10 +94,6 @@ for (let i = 0; i < 10; i++) {
   questionSectionsArray.push(questionSection);
 }
 
-const answerSections = document.querySelectorAll<HTMLElement>(
-  ".questioning-sec .question-answer"
-);
-
 const confirmButton = document.querySelector<HTMLElement>(".confirm-btn");
 let score: number = 0;
 let congratsSection = document.querySelector<HTMLElement>(".congratulation");
